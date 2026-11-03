@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bp62ixg0sl4yg"]
+
+[ext_resource type="PackedScene" uid="uid://c7ccdrsa56lfi" path="res://Objects/Obstacles/Structures/Structure1Face.tscn" id="1_ucp87"]
+[ext_resource type="PackedScene" uid="uid://bmb8vcrrag2wc" path="res://Objects/Obstacles/Structures/StructureBasic.tscn" id="2_e0jk1"]
+[ext_resource type="PackedScene" uid="uid://b72i27v5sxt8j" path="res://Objects/Obstacles/Structures/Structure2Face.tscn" id="3_tpbsd"]
+
+[node name="StructureLarge1" type="StaticBody3D" unique_id=997980760]
+
+[node name="Structure1" parent="." unique_id=662219994 instance=ExtResource("1_ucp87")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="Structure0" parent="." unique_id=1054557471 instance=ExtResource("2_e0jk1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="Structure2" parent="." unique_id=1848175427 instance=ExtResource("2_e0jk1")]
+
+[node name="Structure4" parent="." unique_id=271814042 instance=ExtResource("3_tpbsd")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -8)
+
+[node name="Structure5" parent="." unique_id=2106141574 instance=ExtResource("1_ucp87")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Structure6" parent="." unique_id=2019474483 instance=ExtResource("1_ucp87")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 8)
