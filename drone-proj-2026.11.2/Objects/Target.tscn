@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dfqxjkfexx8wt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k20us"]
+albedo_color = Color(1, 0, 0, 1)
+metallic = 1.0
+metallic_specular = 0.47
+roughness = 0.4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uuy80"]
+material = SubResource("StandardMaterial3D_k20us")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uuy80"]
+
+[node name="Target" type="StaticBody3D" unique_id=469752833 groups=["Target"]]
+collision_layer = 8
+collision_mask = 0
+
+[node name="TargetMesh" type="MeshInstance3D" parent="." unique_id=1203532281]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_uuy80")
+
+[node name="TargetCollision" type="CollisionShape3D" parent="." unique_id=805647226 groups=["Target"]]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_uuy80")

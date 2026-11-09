@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://5txny3jvxqei"]
+
+[ext_resource type="Script" uid="uid://q1ncxbgcy7og" path="res://enviroment/test_enviro.gd" id="1_mcwju"]
+[ext_resource type="PackedScene" uid="uid://dfqxjkfexx8wt" path="res://Objects/Target.tscn" id="2_ksgl0"]
+[ext_resource type="PackedScene" uid="uid://xale5wwilo2i" path="res://Objects/Terrain/terrain02.tscn" id="3_mcwju"]
+[ext_resource type="PackedScene" uid="uid://bp62ixg0sl4yg" path="res://Objects/Obstacles/Structures/StructureLarge1.tscn" id="3_tn53k"]
+[ext_resource type="PackedScene" uid="uid://b60ek4o40d6m0" path="res://Objects/Obstacles/Trees/tree.tscn" id="5_qchqh"]
+[ext_resource type="PackedScene" uid="uid://blfeo2rst5mnf" path="res://Objects/Obstacles/Structures/StructureLarge2.tscn" id="6_55tgx"]
+[ext_resource type="Script" uid="uid://hnf4jvci3ws3" path="res://enviroment/camera_piviot.gd" id="7_4ttdw"]
+[ext_resource type="PackedScene" uid="uid://b3bgfc7k1yn5i" path="res://Objects/Drone/Drone.tscn" id="8_aiabg"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_uuy80"]
+
+[node name="Test Enviro" type="Node3D" unique_id=687480765]
+script = ExtResource("1_mcwju")
+Target = ExtResource("2_ksgl0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1539919901]
+transform = Transform3D(1, 0, 0, 0, 0.58778524, 0.809017, 0, -0.809017, 0.58778524, 0, 100, -20.783)
+light_energy = 6.695
+
+[node name="Drone" parent="." unique_id=1487583475 instance=ExtResource("8_aiabg")]
+transform = Transform3D(0.010295166, 0, -0.999947, 0, 1, 0, 0.999947, 0, 0.010295166, 11.308021, 15.631392, 0)
+
+[node name="Terrain2" parent="." unique_id=300435874 instance=ExtResource("3_mcwju")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Bounds" type="StaticBody3D" parent="Terrain2" unique_id=1078983524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.773811, 0)
+disable_mode = 1
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=523954343]
+transform = Transform3D(-3.6, -3.14722e-07, 1.3756935e-14, 0, -1.57361e-07, -3.6, 3.14722e-07, -3.6, 1.57361e-07, -1.5304848e-06, 5.3503914, 35.013412)
+shape = SubResource("WorldBoundaryShape3D_uuy80")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=1493131069]
+transform = Transform3D(3.6, 0, 0, 0, -1.57361e-07, -3.6, 0, 3.6, -1.57361e-07, 0, 5.35, -35)
+shape = SubResource("WorldBoundaryShape3D_uuy80")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=597676602]
+transform = Transform3D(-1.57361e-07, 3.6, -1.57361e-07, 0, -1.57361e-07, -3.6, -3.6, -1.57361e-07, 6.8784674e-15, -35, 5.35, 0)
+shape = SubResource("WorldBoundaryShape3D_uuy80")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=1688203827]
+transform = Transform3D(-1.57361e-07, -3.6, 0, -1.57361e-07, 6.8784674e-15, -3.6, 3.6, -1.57361e-07, -1.57361e-07, 35, 5.35, 0)
+shape = SubResource("WorldBoundaryShape3D_uuy80")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=1554793948]
+transform = Transform3D(-1.57361e-07, 3.14722e-07, 3.6, 0, -3.6, 3.14722e-07, 3.6, 1.3756935e-14, 1.57361e-07, 0, 41.03061, 0)
+shape = SubResource("WorldBoundaryShape3D_uuy80")
+
+[node name="StructureLarge2" parent="Terrain2" unique_id=997980760 instance=ExtResource("3_tn53k")]
+transform = Transform3D(-0.38302222, 0, -0.32139376, 0, 0.5, 0, 0.32139376, 0, -0.38302222, 25.540903, 0.20752811, 23.240116)
+
+[node name="StructureLarge1" parent="Terrain2" unique_id=483678837 instance=ExtResource("6_55tgx")]
+transform = Transform3D(-0.015782364, 0, -0.49975085, 0, 0.5, 0, 0.49975085, 0, -0.015782364, 0.80627096, 0.2754774, 24.341566)
+
+[node name="StructureLarge3" parent="Terrain2" unique_id=1731145045 instance=ExtResource("3_tn53k")]
+transform = Transform3D(0.4981684, 0, 0.042758174, 0, 0.5, 0, -0.042758174, 0, 0.4981684, -25.040203, 0.20752811, 19.017452)
+
+[node name="Tree" parent="Terrain2" unique_id=1963959231 instance=ExtResource("5_qchqh")]
+transform = Transform3D(-0.7023446, 0, -0.7118371, 0, 1, 0, 0.7118371, 0, -0.7023446, -18.236376, 10.142047, -29.46183)
+
+[node name="Tree2" parent="Terrain2" unique_id=943590717 instance=ExtResource("5_qchqh")]
+transform = Transform3D(-0.7023446, 0, -0.7118371, 0, 1, 0, 0.7118371, 0, -0.7023446, 22.765196, 10.353082, -10.410201)
+
+[node name="Tree3" parent="Terrain2" unique_id=590994311 instance=ExtResource("5_qchqh")]
+transform = Transform3D(-0.9611181, 0, -0.27613762, 0, 1, 0, 0.27613762, 0, -0.9611181, 1.3667302, 10.386203, -10.766897)
+
+[node name="Tree4" parent="Terrain2" unique_id=800643991 instance=ExtResource("5_qchqh")]
+transform = Transform3D(-0.9556575, 0, 0.29448062, 0, 1, 0, -0.29448062, 0, -0.9556575, 12.091129, 11.09226, -19.996311)
+
+[node name="Tree5" parent="Terrain2" unique_id=138169729 instance=ExtResource("5_qchqh")]
+transform = Transform3D(-0.8898661, 0, -0.45622173, 0, 1, 0, 0.45622173, 0, -0.8898661, -11.407153, 10.426459, -18.956753)
+
+[node name="Tree6" parent="Terrain2" unique_id=2045184817 instance=ExtResource("5_qchqh")]
+transform = Transform3D(-0.8898661, 0, -0.45622173, 0, 1, 0, 0.45622173, 0, -0.8898661, 22.765198, 11.636563, -25.785337)
+
+[node name="Tree7" parent="Terrain2" unique_id=1497244922 instance=ExtResource("5_qchqh")]
+transform = Transform3D(0.9610848, 0, 0.2762536, 0, 1, 0, -0.2762536, 0, 0.9610848, 1.5319355, 11.2255, -27.410677)
+
+[node name="Tree8" parent="Terrain2" unique_id=558074005 instance=ExtResource("5_qchqh")]
+transform = Transform3D(-0.7023446, 0, -0.7118371, 0, 1, 0, 0.7118371, 0, -0.7023446, -24.77859, 10.46588, -13.498593)
+
+[node name="CameraPiviot" type="Node3D" parent="." unique_id=2003006017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.139221, 0)
+script = ExtResource("7_4ttdw")
+
+[node name="Camera3D" type="Camera3D" parent="CameraPiviot" unique_id=440276579]
+transform = Transform3D(1, 0, 0, 0, 0.99691737, -0.07845911, 0, 0.07845911, 0.99691737, 0, -7.0845785, 81.83855)
+keep_aspect = 0
+current = true
+fov = 73.5
+near = 0.07

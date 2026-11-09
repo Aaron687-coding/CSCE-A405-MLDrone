@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://blfeo2rst5mnf"]
+
+[ext_resource type="PackedScene" uid="uid://c7ccdrsa56lfi" path="res://Objects/Obstacles/Structures/Structure1Face.tscn" id="1_3qr70"]
+[ext_resource type="PackedScene" uid="uid://bmb8vcrrag2wc" path="res://Objects/Obstacles/Structures/StructureBasic.tscn" id="2_wkmle"]
+
+[node name="StructureLarge1" type="StaticBody3D" unique_id=997980760]
+collision_layer = 2
+collision_mask = 0
+
+[node name="s1" parent="." unique_id=662219994 instance=ExtResource("1_3qr70")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="s2" parent="." unique_id=1923014187 instance=ExtResource("1_3qr70")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 8)
+
+[node name="s3" parent="." unique_id=1567812671 instance=ExtResource("1_3qr70")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 16)
+
+[node name="s4" parent="." unique_id=416792195 instance=ExtResource("1_3qr70")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -8)
+
+[node name="s5" parent="." unique_id=2106141574 instance=ExtResource("1_3qr70")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="s6" parent="." unique_id=2019474483 instance=ExtResource("1_3qr70")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 8)
+
+[node name="s7" parent="." unique_id=720119000 instance=ExtResource("1_3qr70")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 8, 0)
+
+[node name="s8" parent="." unique_id=1054218826 instance=ExtResource("2_wkmle")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="s9" parent="." unique_id=1425284096 instance=ExtResource("1_3qr70")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 8, 8)
+
+[node name="s10" parent="." unique_id=274739995 instance=ExtResource("1_3qr70")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 8, 0)
+
+[node name="s11" parent="." unique_id=1552271383 instance=ExtResource("2_wkmle")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 8, 0)
+
+[node name="s12" parent="." unique_id=1157355412 instance=ExtResource("1_3qr70")]
+transform = Transform3D(1, 0, 3.496911e-07, 0, 1, 0, -3.496911e-07, 0, 1, -8, 8, 8)
