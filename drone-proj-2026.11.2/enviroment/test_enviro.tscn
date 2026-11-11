@@ -83,13 +83,17 @@ transform = Transform3D(0.9610848, 0, 0.2762536, 0, 1, 0, -0.2762536, 0, 0.96108
 [node name="Tree8" parent="Terrain2" unique_id=558074005 instance=ExtResource("5_qchqh")]
 transform = Transform3D(-0.7023446, 0, -0.7118371, 0, 1, 0, 0.7118371, 0, -0.7023446, -24.77859, 10.46588, -13.498593)
 
-[node name="CameraPiviot" type="Node3D" parent="." unique_id=2003006017]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.139221, 0)
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1755922523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.1392, 0)
 script = ExtResource("7_4ttdw")
 
-[node name="Camera3D" type="Camera3D" parent="CameraPiviot" unique_id=440276579]
-transform = Transform3D(1, 0, 0, 0, 0.99691737, -0.07845911, 0, 0.07845911, 0.99691737, 0, -7.0845785, 81.83855)
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1486108370]
+transform = Transform3D(1, 0, 0, 0, 0.99691737, -0.07845913, 0, 0.07845913, 0.99691737, 0, -7.085, 75)
 keep_aspect = 0
 current = true
 fov = 73.5
 near = 0.07
+
+[node name="SpawnArea" type="CollisionShape3D" parent="." unique_id=2076138218]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 21.7738, 0)
+shape = SubResource("BoxShape3D_54261")
