@@ -1,5 +1,9 @@
 [gd_scene format=4 uid="uid://b3bgfc7k1yn5i"]
 
+[ext_resource type="Script" path="res://drone.gd" id="drone_script"]
+[ext_resource type="Script" path="res://drone_ai_controller.gd" id="ai_script"]
+[ext_resource type="PackedScene" path="res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.tscn" id="ray_sensor"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_k20us"]
 size = Vector3(2.5722141, 2.401146, 0.64928436)
 
@@ -107,9 +111,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_i5mta")
 
-[node name="Drone" type="RigidBody3D" unique_id=891899148]
+[node name="Drone" type="CharacterBody3D" unique_id=891899148]
 collision_layer = 4
-collision_mask = 11
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("drone_script")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=528612595]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.0030145645, 0.3006168, 0.02008704)
@@ -119,3 +125,19 @@ shape = SubResource("BoxShape3D_k20us")
 transform = Transform3D(0.5, 0, 0, 0, 0.05, 0, 0, 0, 0.5, 0.776, 0.51464844, -0.67099994)
 layers = 2
 mesh = SubResource("ArrayMesh_7b0ca")
+
+[node name="AIController3D" type="Node3D" parent="."]
+script = ExtResource("ai_script")
+
+[node name="RaycastSensor3D" parent="AIController3D" instance=ExtResource("ray_sensor")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
+collision_mask = 3
+n_rays_width = 8.0
+n_rays_height = 4.0
+ray_length = 20.0
+cone_width = 120.0
+cone_height = 60.0
+
+[node name="DroneCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.819152, -0.573576, 0, 0.573576, 0.819152, 0, 0, 0)
+fov = 90.0
