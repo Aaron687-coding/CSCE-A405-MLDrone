@@ -6,82 +6,86 @@
 [ext_resource type="PackedScene" uid="uid://bp62ixg0sl4yg" path="res://Objects/Obstacles/Structures/StructureLarge1.tscn" id="3_tn53k"]
 [ext_resource type="PackedScene" uid="uid://b60ek4o40d6m0" path="res://Objects/Obstacles/Trees/tree.tscn" id="5_qchqh"]
 [ext_resource type="PackedScene" uid="uid://blfeo2rst5mnf" path="res://Objects/Obstacles/Structures/StructureLarge2.tscn" id="6_55tgx"]
-[ext_resource type="Script" uid="uid://hnf4jvci3ws3" path="res://enviroment/camera_piviot.gd" id="7_4ttdw"]
+[ext_resource type="Script" uid="uid://pjtqsaplxsqx" path="res://enviroment/camera_pivot.gd" id="7_4ttdw"]
 [ext_resource type="PackedScene" uid="uid://b3bgfc7k1yn5i" path="res://Objects/Drone/Drone.tscn" id="8_aiabg"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_uuy80"]
 
-[node name="Test Enviro" type="Node3D" unique_id=687480765]
+[sub_resource type="BoxShape3D" id="BoxShape3D_54261"]
+size = Vector3(70, 80, 70)
+
+[node name="Test Enviro" type="Node3D" unique_id=647743093 node_paths=PackedStringArray("bounding_box")]
 script = ExtResource("1_mcwju")
+bounding_box = NodePath("SpawnArea")
 Target = ExtResource("2_ksgl0")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1539919901]
-transform = Transform3D(1, 0, 0, 0, 0.58778524, 0.809017, 0, -0.809017, 0.58778524, 0, 100, -20.783)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=82474342]
+transform = Transform3D(1, 0, 0, 0, 0.587785, 0.809017, 0, -0.809017, 0.587785, 0, 100, -20.783)
 light_energy = 6.695
 
-[node name="Drone" parent="." unique_id=1487583475 instance=ExtResource("8_aiabg")]
-transform = Transform3D(0.010295166, 0, -0.999947, 0, 1, 0, 0.999947, 0, 0.010295166, 11.308021, 15.631392, 0)
+[node name="Drone" parent="." unique_id=1076121737 instance=ExtResource("8_aiabg")]
+transform = Transform3D(0.0102952, 0, -0.999947, 0, 1, 0, 0.999947, 0, 0.0102952, 11.308, 15.6314, 0)
 
-[node name="Terrain2" parent="." unique_id=300435874 instance=ExtResource("3_mcwju")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+[node name="Terrain2" parent="." unique_id=1097993845 instance=ExtResource("3_mcwju")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="Bounds" type="StaticBody3D" parent="Terrain2" unique_id=1078983524]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.773811, 0)
+[node name="Bounds" type="StaticBody3D" parent="Terrain2" unique_id=841192775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.7738, 0)
 disable_mode = 1
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=523954343]
-transform = Transform3D(-3.6, -3.14722e-07, 1.3756935e-14, 0, -1.57361e-07, -3.6, 3.14722e-07, -3.6, 1.57361e-07, -1.5304848e-06, 5.3503914, 35.013412)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=98649819]
+transform = Transform3D(-3.6, -3.14722e-07, 1.37569e-14, 0, -1.57361e-07, -3.6, 3.14722e-07, -3.6, 1.57361e-07, -1.53048e-06, 5.35039, 35.0134)
 shape = SubResource("WorldBoundaryShape3D_uuy80")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=1493131069]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=158015587]
 transform = Transform3D(3.6, 0, 0, 0, -1.57361e-07, -3.6, 0, 3.6, -1.57361e-07, 0, 5.35, -35)
 shape = SubResource("WorldBoundaryShape3D_uuy80")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=597676602]
-transform = Transform3D(-1.57361e-07, 3.6, -1.57361e-07, 0, -1.57361e-07, -3.6, -3.6, -1.57361e-07, 6.8784674e-15, -35, 5.35, 0)
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=1750799150]
+transform = Transform3D(-1.57361e-07, 3.6, -1.57361e-07, 0, -1.57361e-07, -3.6, -3.6, -1.57361e-07, 6.87847e-15, -35, 5.35, 0)
 shape = SubResource("WorldBoundaryShape3D_uuy80")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=1688203827]
-transform = Transform3D(-1.57361e-07, -3.6, 0, -1.57361e-07, 6.8784674e-15, -3.6, 3.6, -1.57361e-07, -1.57361e-07, 35, 5.35, 0)
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=832886441]
+transform = Transform3D(-1.57361e-07, -3.6, 0, -1.57361e-07, 6.87847e-15, -3.6, 3.6, -1.57361e-07, -1.57361e-07, 35, 5.35, 0)
 shape = SubResource("WorldBoundaryShape3D_uuy80")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=1554793948]
-transform = Transform3D(-1.57361e-07, 3.14722e-07, 3.6, 0, -3.6, 3.14722e-07, 3.6, 1.3756935e-14, 1.57361e-07, 0, 41.03061, 0)
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=1771692416]
+transform = Transform3D(-1.57361e-07, 3.14722e-07, 3.6, 0, -3.6, 3.14722e-07, 3.6, 1.37569e-14, 1.57361e-07, 0, 41.0306, 0)
 shape = SubResource("WorldBoundaryShape3D_uuy80")
 
-[node name="StructureLarge2" parent="Terrain2" unique_id=997980760 instance=ExtResource("3_tn53k")]
-transform = Transform3D(-0.38302222, 0, -0.32139376, 0, 0.5, 0, 0.32139376, 0, -0.38302222, 25.540903, 0.20752811, 23.240116)
+[node name="StructureLarge2" parent="Terrain2" unique_id=1322400841 instance=ExtResource("3_tn53k")]
+transform = Transform3D(-0.383022, 0, -0.321394, 0, 0.5, 0, 0.321394, 0, -0.383022, 25.5409, 0.207528, 23.2401)
 
-[node name="StructureLarge1" parent="Terrain2" unique_id=483678837 instance=ExtResource("6_55tgx")]
-transform = Transform3D(-0.015782364, 0, -0.49975085, 0, 0.5, 0, 0.49975085, 0, -0.015782364, 0.80627096, 0.2754774, 24.341566)
+[node name="StructureLarge1" parent="Terrain2" unique_id=1141235634 instance=ExtResource("6_55tgx")]
+transform = Transform3D(-0.0157824, 0, -0.499751, 0, 0.5, 0, 0.499751, 0, -0.0157824, 0.806271, 0.275477, 24.3416)
 
-[node name="StructureLarge3" parent="Terrain2" unique_id=1731145045 instance=ExtResource("3_tn53k")]
-transform = Transform3D(0.4981684, 0, 0.042758174, 0, 0.5, 0, -0.042758174, 0, 0.4981684, -25.040203, 0.20752811, 19.017452)
+[node name="StructureLarge3" parent="Terrain2" unique_id=160990029 instance=ExtResource("3_tn53k")]
+transform = Transform3D(0.498168, 0, 0.0427582, 0, 0.5, 0, -0.0427582, 0, 0.498168, -25.0402, 0.207528, 19.0175)
 
-[node name="Tree" parent="Terrain2" unique_id=1963959231 instance=ExtResource("5_qchqh")]
-transform = Transform3D(-0.7023446, 0, -0.7118371, 0, 1, 0, 0.7118371, 0, -0.7023446, -18.236376, 10.142047, -29.46183)
+[node name="Tree" parent="Terrain2" unique_id=320427369 instance=ExtResource("5_qchqh")]
+transform = Transform3D(-0.702345, 0, -0.711837, 0, 1, 0, 0.711837, 0, -0.702345, -18.2364, 10.142, -29.4618)
 
-[node name="Tree2" parent="Terrain2" unique_id=943590717 instance=ExtResource("5_qchqh")]
-transform = Transform3D(-0.7023446, 0, -0.7118371, 0, 1, 0, 0.7118371, 0, -0.7023446, 22.765196, 10.353082, -10.410201)
+[node name="Tree2" parent="Terrain2" unique_id=476627798 instance=ExtResource("5_qchqh")]
+transform = Transform3D(-0.702345, 0, -0.711837, 0, 1, 0, 0.711837, 0, -0.702345, 22.7652, 10.3531, -10.4102)
 
-[node name="Tree3" parent="Terrain2" unique_id=590994311 instance=ExtResource("5_qchqh")]
-transform = Transform3D(-0.9611181, 0, -0.27613762, 0, 1, 0, 0.27613762, 0, -0.9611181, 1.3667302, 10.386203, -10.766897)
+[node name="Tree3" parent="Terrain2" unique_id=1147478385 instance=ExtResource("5_qchqh")]
+transform = Transform3D(-0.961118, 0, -0.276138, 0, 1, 0, 0.276138, 0, -0.961118, 1.36673, 10.3862, -10.7669)
 
-[node name="Tree4" parent="Terrain2" unique_id=800643991 instance=ExtResource("5_qchqh")]
-transform = Transform3D(-0.9556575, 0, 0.29448062, 0, 1, 0, -0.29448062, 0, -0.9556575, 12.091129, 11.09226, -19.996311)
+[node name="Tree4" parent="Terrain2" unique_id=859541575 instance=ExtResource("5_qchqh")]
+transform = Transform3D(-0.955657, 0, 0.294481, 0, 1, 0, -0.294481, 0, -0.955657, 12.0911, 11.0923, -19.9963)
 
-[node name="Tree5" parent="Terrain2" unique_id=138169729 instance=ExtResource("5_qchqh")]
-transform = Transform3D(-0.8898661, 0, -0.45622173, 0, 1, 0, 0.45622173, 0, -0.8898661, -11.407153, 10.426459, -18.956753)
+[node name="Tree5" parent="Terrain2" unique_id=909565598 instance=ExtResource("5_qchqh")]
+transform = Transform3D(-0.889866, 0, -0.456222, 0, 1, 0, 0.456222, 0, -0.889866, -11.4072, 10.4265, -18.9568)
 
-[node name="Tree6" parent="Terrain2" unique_id=2045184817 instance=ExtResource("5_qchqh")]
-transform = Transform3D(-0.8898661, 0, -0.45622173, 0, 1, 0, 0.45622173, 0, -0.8898661, 22.765198, 11.636563, -25.785337)
+[node name="Tree6" parent="Terrain2" unique_id=1518940908 instance=ExtResource("5_qchqh")]
+transform = Transform3D(-0.889866, 0, -0.456222, 0, 1, 0, 0.456222, 0, -0.889866, 22.7652, 11.6366, -25.7853)
 
-[node name="Tree7" parent="Terrain2" unique_id=1497244922 instance=ExtResource("5_qchqh")]
-transform = Transform3D(0.9610848, 0, 0.2762536, 0, 1, 0, -0.2762536, 0, 0.9610848, 1.5319355, 11.2255, -27.410677)
+[node name="Tree7" parent="Terrain2" unique_id=1368525731 instance=ExtResource("5_qchqh")]
+transform = Transform3D(0.961085, 0, 0.276254, 0, 1, 0, -0.276254, 0, 0.961085, 1.53194, 11.2255, -27.4107)
 
-[node name="Tree8" parent="Terrain2" unique_id=558074005 instance=ExtResource("5_qchqh")]
-transform = Transform3D(-0.7023446, 0, -0.7118371, 0, 1, 0, 0.7118371, 0, -0.7023446, -24.77859, 10.46588, -13.498593)
+[node name="Tree8" parent="Terrain2" unique_id=1571771455 instance=ExtResource("5_qchqh")]
+transform = Transform3D(-0.702345, 0, -0.711837, 0, 1, 0, 0.711837, 0, -0.702345, -24.7786, 10.4659, -13.4986)
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1755922523]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.1392, 0)
