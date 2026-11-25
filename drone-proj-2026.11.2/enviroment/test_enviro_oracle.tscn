@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://cxyyjpvu8xpxx"]
+
+[ext_resource type="Script" uid="uid://q1ncxbgcy7og" path="res://enviroment/test_enviro.gd" id="1_556kq"]
+[ext_resource type="PackedScene" uid="uid://dfqxjkfexx8wt" path="res://Objects/Target.tscn" id="2_tnmjk"]
+[ext_resource type="PackedScene" uid="uid://xale5wwilo2i" path="res://Objects/Terrain/terrain02.tscn" id="4_uub0n"]
+[ext_resource type="PackedScene" uid="uid://bp62ixg0sl4yg" path="res://Objects/Obstacles/Structures/StructureLarge1.tscn" id="5_8gsev"]
+[ext_resource type="PackedScene" uid="uid://blfeo2rst5mnf" path="res://Objects/Obstacles/Structures/StructureLarge2.tscn" id="6_hddqa"]
+[ext_resource type="PackedScene" uid="uid://b60ek4o40d6m0" path="res://Objects/Obstacles/Trees/tree.tscn" id="7_esyv0"]
+[ext_resource type="PackedScene" uid="uid://cueuk2h7bwkfo" path="res://Objects/Drone/Oracle_Drone.tscn" id="8_fr2so"]
+[ext_resource type="Script" uid="uid://pjtqsaplxsqx" path="res://enviroment/camera_pivot.gd" id="8_ncigw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fr2so"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_556kq"]
+sky_material = SubResource("ProceduralSkyMaterial_fr2so")
+
+[sub_resource type="Environment" id="Environment_tnmjk"]
+background_mode = 2
+sky = SubResource("Sky_556kq")
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_uuy80"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_54261"]
+size = Vector3(70, 80, 70)
+
+[node name="Test Enviro" type="Node3D" unique_id=647743093 node_paths=PackedStringArray("bounding_box")]
+script = ExtResource("1_556kq")
+bounding_box = NodePath("SpawnArea")
+Target = ExtResource("2_tnmjk")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1501741918]
+environment = SubResource("Environment_tnmjk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=82474342]
+transform = Transform3D(1, 0, 0, 0, 0.587785, 0.809017, 0, -0.809017, 0.587785, 0, 100, -20.783)
+light_energy = 1.637
+
+[node name="Terrain2" parent="." unique_id=1097993845 instance=ExtResource("4_uub0n")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Bounds" type="StaticBody3D" parent="Terrain2" unique_id=841192775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.7738, 0)
+disable_mode = 1
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=98649819]
+transform = Transform3D(-3.6, -3.14722e-07, 1.37569e-14, 0, -1.57361e-07, -3.6, 3.14722e-07, -3.6, 1.57361e-07, -1.53048e-06, 5.35039, 35.0134)
+shape = SubResource("WorldBoundaryShape3D_uuy80")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=158015587]
+transform = Transform3D(3.6, 0, 0, 0, -1.57361e-07, -3.6, 0, 3.6, -1.57361e-07, 0, 5.35, -35)
+shape = SubResource("WorldBoundaryShape3D_uuy80")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=1750799150]
+transform = Transform3D(-1.57361e-07, 3.6, -1.57361e-07, 0, -1.57361e-07, -3.6, -3.6, -1.57361e-07, 6.87847e-15, -35, 5.35, 0)
+shape = SubResource("WorldBoundaryShape3D_uuy80")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=832886441]
+transform = Transform3D(-1.57361e-07, -3.6, 0, -1.57361e-07, 6.87847e-15, -3.6, 3.6, -1.57361e-07, -1.57361e-07, 35, 5.35, 0)
+shape = SubResource("WorldBoundaryShape3D_uuy80")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Terrain2/Bounds" unique_id=1771692416]
+transform = Transform3D(-1.57361e-07, 3.14722e-07, 3.6, 0, -3.6, 3.14722e-07, 3.6, 1.37569e-14, 1.57361e-07, 0, 41.0306, 0)
+shape = SubResource("WorldBoundaryShape3D_uuy80")
+
+[node name="StructureLarge2" parent="Terrain2" unique_id=1322400841 instance=ExtResource("5_8gsev")]
+transform = Transform3D(-0.383022, 0, -0.321394, 0, 0.5, 0, 0.321394, 0, -0.383022, 25.5409, 0.207528, 23.2401)
+
+[node name="StructureLarge1" parent="Terrain2" unique_id=1141235634 instance=ExtResource("6_hddqa")]
+transform = Transform3D(-0.0157824, 0, -0.499751, 0, 0.5, 0, 0.499751, 0, -0.0157824, 0.806271, 0.275477, 24.3416)
+
+[node name="StructureLarge3" parent="Terrain2" unique_id=160990029 instance=ExtResource("5_8gsev")]
+transform = Transform3D(0.498168, 0, 0.0427582, 0, 0.5, 0, -0.0427582, 0, 0.498168, -25.0402, 0.207528, 19.0175)
+
+[node name="Tree" parent="Terrain2" unique_id=320427369 instance=ExtResource("7_esyv0")]
+transform = Transform3D(-0.702345, 0, -0.711837, 0, 1, 0, 0.711837, 0, -0.702345, -18.2364, 10.142, -29.4618)
+
+[node name="Tree2" parent="Terrain2" unique_id=476627798 instance=ExtResource("7_esyv0")]
+transform = Transform3D(-0.702345, 0, -0.711837, 0, 1, 0, 0.711837, 0, -0.702345, 22.7652, 10.3531, -10.4102)
+
+[node name="Tree3" parent="Terrain2" unique_id=1147478385 instance=ExtResource("7_esyv0")]
+transform = Transform3D(-0.961118, 0, -0.276138, 0, 1, 0, 0.276138, 0, -0.961118, 1.36673, 10.3862, -10.7669)
+
+[node name="Tree4" parent="Terrain2" unique_id=859541575 instance=ExtResource("7_esyv0")]
+transform = Transform3D(-0.955657, 0, 0.294481, 0, 1, 0, -0.294481, 0, -0.955657, 12.0911, 11.0923, -19.9963)
+
+[node name="Tree5" parent="Terrain2" unique_id=909565598 instance=ExtResource("7_esyv0")]
+transform = Transform3D(-0.889866, 0, -0.456222, 0, 1, 0, 0.456222, 0, -0.889866, -11.4072, 10.4265, -18.9568)
+
+[node name="Tree6" parent="Terrain2" unique_id=1518940908 instance=ExtResource("7_esyv0")]
+transform = Transform3D(-0.889866, 0, -0.456222, 0, 1, 0, 0.456222, 0, -0.889866, 22.7652, 11.6366, -25.7853)
+
+[node name="Tree7" parent="Terrain2" unique_id=1368525731 instance=ExtResource("7_esyv0")]
+transform = Transform3D(0.961085, 0, 0.276254, 0, 1, 0, -0.276254, 0, 0.961085, 1.53194, 11.2255, -27.4107)
+
+[node name="Tree8" parent="Terrain2" unique_id=1571771455 instance=ExtResource("7_esyv0")]
+transform = Transform3D(-0.702345, 0, -0.711837, 0, 1, 0, 0.711837, 0, -0.702345, -24.7786, 10.4659, -13.4986)
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1755922523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.1392, 0)
+script = ExtResource("8_ncigw")
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1486108370]
+transform = Transform3D(1, 0, 0, 0, 0.9969173, -0.07845913, 0, 0.07845913, 0.9969173, 0, -7.085, 74.999985)
+keep_aspect = 0
+current = true
+fov = 73.5
+near = 0.07
+
+[node name="SpawnArea" type="CollisionShape3D" parent="." unique_id=2076138218]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 21.7738, 0)
+shape = SubResource("BoxShape3D_54261")
+
+[node name="Drone" parent="." unique_id=891899148 instance=ExtResource("8_fr2so")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
+collision_mask = 7
+gravity_scale = 0.0
+cruise_speed = 16.0
+max_force = 120.0
+compensate_gravity = false

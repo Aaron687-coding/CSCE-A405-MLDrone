@@ -11,6 +11,8 @@ const GROUND_CLEARANCE: float = 0.1 # Small lift so the target doesn't overlap t
 
 @export var bounding_box: CollisionShape3D # Must use a BoxShape3D, defines the spawn volume -> SpawnArea in test_enviro.tscn
 @export var Target: PackedScene
+@export var NUM_POINTS: int = 10
+@export var REUSE_POINTS: bool = false
 
 var X_MIN_BOUND: float
 var X_MAX_BOUND: float
@@ -22,6 +24,7 @@ var Z_MAX_BOUND: float
 var spawn_points_array: Array[Vector3] = []
 
 var _bounds_ready: bool = false
+var _points_spawned: int = 0 # instantiated points
 
 # Initialize bounding box and bounds
 func _ready():
@@ -65,8 +68,12 @@ func _build_target_shape() -> CapsuleShape3D:
 	return capsule
 
 # Procedurally creates spawn points for the target
-func generate_spawn_points(min_x: float, max_x: float, min_z: float, max_z: float, num_points: int = 10) -> Array[Vector3]:
-	spawn_points_array.clear()
+func generate_spawn_points(min_x: float, max_x: float, min_z: float, max_z: float, num_points: int = NUM_POINTS) -> Array[Vector3]:
+	# spawn_points_array.clear()
+
+	# Update NUM_POINTS for regeneration (to prevent the agent from getting used to a certain combination of points)
+	if num_points != NUM_POINTS:
+		NUM_POINTS = num_points
 
 	if not _bounds_ready:
 		push_error("Cannot generate spawn points: bounding_box is missing or invalid.")
@@ -134,15 +141,19 @@ func spawn_target(use_random_spawn: bool = true):
 
 	if use_random_spawn and _bounds_ready:
 		# Spawn points are generated once over the full bounding box and then reused
-		if spawn_points_array.is_empty():
+		# Or regenerate if all points are exhausted
+		if spawn_points_array.is_empty() or _points_spawned % NUM_POINTS == 0:
+			print("Regenerating spawn points...")
 			generate_spawn_points(X_MIN_BOUND, X_MAX_BOUND, Z_MIN_BOUND, Z_MAX_BOUND, 10) # Default number of points
 
 		if spawn_points_array.is_empty():
 			push_error("Could not generate any valid spawn points!")
 			return
 
-		# Global position of a random generated spawn point
+		# Global position of a random generated spawn point (and erase it)
 		chosen_spawn_position = spawn_points_array.pick_random()
+		if not REUSE_POINTS: # Delete point from array if we don't want to reuse them
+			spawn_points_array.erase(chosen_spawn_position) 
 
 	else:
 		if use_random_spawn:
@@ -168,5 +179,5 @@ func spawn_target(use_random_spawn: bool = true):
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
+		# Mod = "all" points exhausted in Array
 		spawn_target()
-
